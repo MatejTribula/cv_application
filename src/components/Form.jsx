@@ -4,52 +4,133 @@ import { useState } from 'react'
 
 function Form(props) {
     const [sent, setSent] = useState(false)
+    const [inputArr, setInputArr] = useState(props.inputs)
+
+
 
     function handleSubmit(e) {
         e.preventDefault()
 
-        props.inputs.forEach((input, index) => {
-            const htmlInput = e.target.querySelector(`#${input.name}`)
+        if (inputArr.length === 1 && inputArr[0].type === 'file') {
+            const input = inputArr[0]
+            const htmlInput = e.target.querySelector(`#${idString(input.name)}`)
+            const file = htmlInput.files[0]
 
-            console.log(index)
+            // console.log(file)
+            if (file) {
 
-            const value = htmlInput.value
-            input.value = value
-            console.log(value)
-        })
+                const newInputs = [...inputArr]
+                const reader = new FileReader();
+
+                // console.log(reader)
+                reader.onload = function (e) {
+                    console.log(e)
+                    newInputs[0].src = e.target.result
+                    console.log(e.target.result)
+                    setInputArr(newInputs)
+                }
+                reader.readAsDataURL(file);
+            } else {
+                console.error('no file selected')
+            }
+
+        } else {
+            props.inputs.forEach((input, index) => {
+                const htmlInput = e.target.querySelector(`#${idString(input.name)}`)
+
+                const newInputs = [...inputArr]
+                inputArr[index].value = htmlInput.value
+
+                // console.log(htmlInput.value)
+                // console.log(newInputs)
+                setInputArr(newInputs)
+            })
+        }
+
+
 
         setSent(true)
     }
 
+    // this function removes space from the string with two words
+    function idString(string) {
+        // console.log(string)
+        if (string.includes(' ')) {
+            // console.log(string)
+
+            const spaceIndex = string.indexOf(' ')
+            let trimmedString = string.replace(/\s+/g, '');
+
+            // console.log('trimmed:' + trimmedString)
+
+            const capital = trimmedString[spaceIndex].toUpperCase()
+            const finalString = trimmedString.substring(0, spaceIndex) + capital + trimmedString.substring(spaceIndex + 1)
+
+            return finalString
+        }
+        return string
+    }
+
+
     return (
-        <>
+        <div>
+
             {sent
                 ? <div>
-                    {props.inputs.map(input => (
-                        // console.log(input)
-                        <div>
-                            <p className='para-title'>{input.name}</p>
-                            <p className='para-text'>{input.value}</p>
+                    {inputArr.length === 1 && inputArr[0].type === 'file'
+                        ? <img src={inputArr[0].src} alt="" />
+                        : <>
+                            <h2 > {props.title}</h2 >
+                            {inputArr.map(input => (
+                                <div>
+                                    <p className='para-title'>{input.name}</p>
+                                    <p className='para-text'>{input.value}</p>
+                                </div>
+                            ))}</>}
 
-                        </div>
-                    ))}
                     <button onClick={() => setSent(false)}>edit</button>
 
 
                 </div>
-                : <form onSubmit={handleSubmit}>
-                    {
-                        props.inputs.map(input => (
-                            <div className='label-input'>
-                                <label htmlFor={input.type}>{input.name}</label>
-                                {!sent ? <input key={input.id} type={input.type} id={input.name} placeholder='type here' /> : <p>{input.value}</p>}
+                : <><h2 > {props.title}</h2 >
+                    <form className={props.classes} onSubmit={handleSubmit}>
+                        {inputArr.length === 1 && inputArr[0].type === 'file'
+                            ? <>
+                                {inputArr[0].src !== ''
+                                    ? <img src={inputArr[0].src} alt="" />
+                                    : <div className='imageContainer'></div>}
 
-                            </div>
-                        ))
-                    }
-                    <button type='submit'>submit</button>
-                </form >}
-        </>
+
+                                <input type={inputArr[0].type} id={idString(inputArr[0].name)} accept=".jpg, .jpeg, .png" required />
+                            </>
+                            : <>
+                                {inputArr.map(input => (
+                                    <div className='label-input'>
+                                        <label htmlFor={idString(input.name)}>{input.name}</label>
+                                        <input
+                                            key={input.id}
+                                            type={input.type}
+                                            id={idString(input.name)}
+                                            placeholder='type here'
+                                            value={input.value}
+                                            onChange={(e) => {
+                                                const newInputs = inputArr.map((item) =>
+                                                    item.id === input.id ? { ...item, value: e.target.value } : item
+                                                );
+                                                setInputArr(newInputs);
+                                            }}
+
+                                            required />
+
+                                    </div>
+                                ))}
+                            </>}
+                        <button type='submit'>submit</button>
+                    </form >
+                </>
+            }
+        </div >
+
     )
 }
 

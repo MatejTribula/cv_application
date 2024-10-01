@@ -19,10 +19,10 @@
         - address
     - form for the highest level of education
         - school name
-        - title of study
+        - profession
         - duration
     - form for practical experience
-        - company name
+        - company
         - task
         - duration
     - submit button 
@@ -38,4 +38,7 @@
  - edit button will just change state 
 
 
-
+# TO FIX / TO ADD
+- all labels in form are supposed to be in one div and all the inputs in another 
+- double check class names and their placement
+- create the design part of the cv
