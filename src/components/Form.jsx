@@ -7,26 +7,33 @@ function Form(props) {
     const [inputArr, setInputArr] = useState(props.inputs)
 
 
-
+    // function that is executed on submit of the function
+    // if the form concerns image it is of length 1 and input type file
+    // else
     function handleSubmit(e) {
         e.preventDefault()
 
-        if (inputArr.length === 1 && inputArr[0].type === 'file') {
+        const newInputs = [...inputArr]
+        // console.log(newInputs)
+
+        if (props.isImage) {
             const input = inputArr[0]
             const htmlInput = e.target.querySelector(`#${idString(input.name)}`)
             const file = htmlInput.files[0]
 
             // console.log(file)
             if (file) {
-
-                const newInputs = [...inputArr]
                 const reader = new FileReader();
 
                 // console.log(reader)
+
+                //this class instance handles files submitted into form using form type file
                 reader.onload = function (e) {
-                    console.log(e)
+                    // console.log(e)
                     newInputs[0].src = e.target.result
                     console.log(e.target.result)
+
+                    //we need to wait and then assign src (for that reason it is not simplified)
                     setInputArr(newInputs)
                 }
                 reader.readAsDataURL(file);
@@ -38,13 +45,12 @@ function Form(props) {
             props.inputs.forEach((input, index) => {
                 const htmlInput = e.target.querySelector(`#${idString(input.name)}`)
 
-                const newInputs = [...inputArr]
                 inputArr[index].value = htmlInput.value
 
                 // console.log(htmlInput.value)
-                // console.log(newInputs)
-                setInputArr(newInputs)
+
             })
+            setInputArr(newInputs)
         }
 
 
@@ -104,9 +110,14 @@ function Form(props) {
                                 <input type={inputArr[0].type} id={idString(inputArr[0].name)} accept=".jpg, .jpeg, .png" required />
                             </>
                             : <>
-                                {inputArr.map(input => (
-                                    <div className='label-input'>
-                                        <label htmlFor={idString(input.name)}>{input.name}</label>
+                                <div className='label-container'>
+                                    {inputArr.map(input => (
+                                        <label key={input.id} htmlFor={idString(input.name)}>{input.name}</label>
+                                    ))}
+                                </div>
+                                <div className="input-container">
+                                    {inputArr.map(input => (
+
                                         <input
                                             key={input.id}
                                             type={input.type}
@@ -121,9 +132,8 @@ function Form(props) {
                                             }}
 
                                             required />
-
-                                    </div>
-                                ))}
+                                    ))}
+                                </div>
                             </>}
                         <button type='submit'>submit</button>
                     </form >

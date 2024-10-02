@@ -39,6 +39,5 @@
 
 
 # TO FIX / TO ADD
-- all labels in form are supposed to be in one div and all the inputs in another 
-- double check class names and their placement
-- create the design part of the cv
+- clean up the syntax
+- finish styling

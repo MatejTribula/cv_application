@@ -1,0 +1,37 @@
+/* .cv-section {
+    background-color: var(--clr-white);
+    padding: var(--padding-b);
+    width: 1024px;
+}
+
+.cv-section .container,
+.design {
+    display: flex;
+}
+
+.picture-general {
+    gap: 3rem;
+}
+
+.forms-design,
+.edu-exp {
+    gap: 2rem;
+}
+
+.design {   
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+.design h2 {
+    display: inline-block;
+    font-size: 6rem;
+    transform: rotate(-90deg);
+    transform-origin: center;
+}
+
+.gradient-shape {
+    background: linear-gradient(to bottom, var(--clr-pink), var(--clr-purple));
+    width: 4rem;
+    height: 100%;
+} */

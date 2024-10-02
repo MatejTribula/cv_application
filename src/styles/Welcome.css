@@ -1,0 +1,47 @@
+/* font-sizes */
+
+.welcome-section {
+    color: var(--clr-white);
+    text-align: center;
+}
+
+h1 {
+    font-size: 48px;
+    line-height: 95%;
+}
+
+.welcome-section p {
+    font-size: 24px;
+}
+
+.welcome-section i {
+    font-size: 70px;
+    rotate: 90deg;
+}
+
+/* sizes */
+.welcome-logo {
+    width: 200px;
+}
+
+
+/* layout */
+.welcome-section {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 2rem;
+}
+
+.welcome-text {
+    display: grid;
+    gap: 1rem;
+}
+
+.welcome-group {
+    display: grid;
+    gap: 2rem;
+}
