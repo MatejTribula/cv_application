@@ -10,7 +10,7 @@ function App() {
           <h2>resume</h2>
           <Form
             inputs={[{ id: 1, type: 'file', name: 'picture', src: '' }]}
-            classes="form form-image" isImage />
+            classes="form-image" isImage />
         </div>
         <div className="cv-bottom">
           <div className="form-group">
@@ -21,7 +21,7 @@ function App() {
               { id: 3, type: 'text', name: 'birth date', value: '' },
               { id: 4, type: 'email', name: 'e-mail', value: '' },
               { id: 5, type: 'text', name: 'phone number', value: '' }]}
-              classes="form form-normal" />
+              classes="form-normal" />
             <Form
               title="general information"
               inputs={[
@@ -30,7 +30,7 @@ function App() {
                 { id: 3, type: 'text', name: 'no 3', value: '' },
                 { id: 4, type: 'text', name: 'no 4', value: '' },
                 { id: 5, type: 'text', name: 'no 5', value: '' }]}
-              classes="form form-normal" />
+              classes="form-normal" />
           </div>
           <div className="form-group">
             <Form
@@ -40,7 +40,7 @@ function App() {
                 { id: 4, type: 'text', name: 'profession', value: '' },
                 { id: 3, type: 'text', name: 'duration', value: '' }
               ]}
-              classes="form form-normal" />
+              classes="form-normal" />
             <Form
               title="work experience"
               inputs={[
@@ -48,7 +48,7 @@ function App() {
                 { id: 4, type: 'text', name: 'profession', value: '' },
                 { id: 3, type: 'text', name: 'duration', value: '' }
               ]}
-              classes="form form-normal" />
+              classes="form-normal" />
           </div>
         </div>
       </section>

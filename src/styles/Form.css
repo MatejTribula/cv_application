@@ -1,0 +1,94 @@
+/* general */
+button,
+.custom-input {
+    font-size: 1rem;
+
+    color: var(--clr-black);
+    background-color: var(--clr-white);
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+
+/* layout */
+
+/* cv top */
+.form-image form {
+    display: grid;
+    gap: 0.5rem;
+}
+
+.form-image img {
+    width: 320px;
+    height: 320px;
+}
+
+.form-image .image-placeholder {
+    width: 320px;
+    height: 320px;
+    background: var(--clr-gradient);
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.input-button-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem
+}
+
+.input-button-container>* {
+    flex: 1;
+}
+
+.cv-top h3 {
+    display: none;
+}
+
+
+/* cv-bottom */
+.form-normal {
+    color: var(--clr-white);
+    display: grid;
+    gap: 1rem;
+}
+
+.form-normal form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.pair-container {
+    display: flex;
+    gap: 1rem;
+}
+
+.form-normal h3 {
+    font-size: 28px;
+    text-transform: uppercase;
+}
+
+
+.label-container,
+.input-container {
+    display: grid;
+    gap: 0.5rem;
+}
+
+.input-container {
+    flex: 1;
+}
+
+.label-container label,
+.input-container input {
+    font-size: 18px;
+    padding: 4px 8px;
+}

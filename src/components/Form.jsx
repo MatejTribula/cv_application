@@ -48,7 +48,6 @@ function Form(props) {
                 inputArr[index].value = htmlInput.value
 
                 // console.log(htmlInput.value)
-
             })
             setInputArr(newInputs)
         }
@@ -79,14 +78,13 @@ function Form(props) {
 
 
     return (
-        <div>
-
+        <div className={props.classes}>
             {sent
                 ? <div>
-                    {inputArr.length === 1 && inputArr[0].type === 'file'
+                    {props.isImage
                         ? <img src={inputArr[0].src} alt="" />
                         : <>
-                            <h2 > {props.title}</h2 >
+                            <h3 >{props.title}</h3 >
                             {inputArr.map(input => (
                                 <div>
                                     <p className='para-title'>{input.name}</p>
@@ -95,47 +93,54 @@ function Form(props) {
                             ))}</>}
 
                     <button onClick={() => setSent(false)}>edit</button>
-
-
                 </div>
-                : <><h2 > {props.title}</h2 >
-                    <form className={props.classes} onSubmit={handleSubmit}>
-                        {inputArr.length === 1 && inputArr[0].type === 'file'
+
+                : <><h3 > {props.title}</h3 >
+                    <form onSubmit={handleSubmit}>
+                        {props.isImage
                             ? <>
                                 {inputArr[0].src !== ''
                                     ? <img src={inputArr[0].src} alt="" />
-                                    : <div className='imageContainer'></div>}
+                                    : <div className='image-placeholder'></div>}
 
-
-                                <input type={inputArr[0].type} id={idString(inputArr[0].name)} accept=".jpg, .jpeg, .png" required />
+                                <div className="input-button-container">
+                                    <label htmlFor={idString(inputArr[0].name)} className="custom-input">
+                                        choose a file
+                                    </label>
+                                    <input type={inputArr[0].type} id={idString(inputArr[0].name)} accept=".jpg, .jpeg, .png" required />
+                                    <button type='submit'>submit</button>
+                                </div>
                             </>
                             : <>
-                                <div className='label-container'>
-                                    {inputArr.map(input => (
-                                        <label key={input.id} htmlFor={idString(input.name)}>{input.name}</label>
-                                    ))}
-                                </div>
-                                <div className="input-container">
-                                    {inputArr.map(input => (
+                                <div className='pair-container'>
+                                    <div className='label-container'>
+                                        {inputArr.map(input => (
+                                            <label key={input.id} htmlFor={idString(input.name)}>{input.name}</label>
+                                        ))}
+                                    </div>
+                                    <div className="input-container">
+                                        {inputArr.map(input => (
+                                            <input
+                                                key={input.id}
+                                                type={input.type}
+                                                id={idString(input.name)}
+                                                placeholder='type here'
+                                                value={input.value}
+                                                onChange={(e) => {
+                                                    const newInputs = inputArr.map((item) =>
+                                                        item.id === input.id ? { ...item, value: e.target.value } : item
+                                                    );
+                                                    setInputArr(newInputs);
+                                                }}
 
-                                        <input
-                                            key={input.id}
-                                            type={input.type}
-                                            id={idString(input.name)}
-                                            placeholder='type here'
-                                            value={input.value}
-                                            onChange={(e) => {
-                                                const newInputs = inputArr.map((item) =>
-                                                    item.id === input.id ? { ...item, value: e.target.value } : item
-                                                );
-                                                setInputArr(newInputs);
-                                            }}
+                                                required />
 
-                                            required />
-                                    ))}
+                                        ))}
+                                    </div>
                                 </div>
+                                <button type='submit'>submit</button>
                             </>}
-                        <button type='submit'>submit</button>
+
                     </form >
                 </>
             }

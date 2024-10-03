@@ -39,5 +39,4 @@
 
 
 # TO FIX / TO ADD
-- clean up the syntax
-- finish styling
+- finish styling for submited forms

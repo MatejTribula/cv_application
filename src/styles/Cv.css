@@ -1,37 +1,43 @@
-/* .cv-section {
-    background-color: var(--clr-white);
-    padding: var(--padding-b);
-    width: 1024px;
+/* text */
+h2 {
+    font-size: 96px;
+    font-weight: bold;
+    background: var(--clr-gradient);
+    -webkit-background-clip: text;
+    color: transparent;
 }
 
-.cv-section .container,
-.design {
+/* layout */
+.cv-section {
+    background-color: var(--clr-black);
+    width: 1024px;
+    height: calc(1024px*1.41);
+
+    padding: 8rem;
+    display: grid;
+    gap: 8rem;
+}
+
+.cv-top,
+.cv-bottom,
+.form-group {
     display: flex;
 }
 
-.picture-general {
+.cv-top {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cv-bottom,
+.cv-bottom .form-group {
     gap: 3rem;
 }
 
-.forms-design,
-.edu-exp {
-    gap: 2rem;
+.cv-bottom {
+    flex-direction: column;
 }
 
-.design {   
-    gap: 1rem;
-    justify-content: flex-end;
+.form-group>* {
+    flex: 1;
 }
-
-.design h2 {
-    display: inline-block;
-    font-size: 6rem;
-    transform: rotate(-90deg);
-    transform-origin: center;
-}
-
-.gradient-shape {
-    background: linear-gradient(to bottom, var(--clr-pink), var(--clr-purple));
-    width: 4rem;
-    height: 100%;
-} */

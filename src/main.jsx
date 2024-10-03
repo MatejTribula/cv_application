@@ -5,6 +5,7 @@ import App from './App.jsx'
 import './styles/index.css'
 import './styles/Welcome.css'
 import './styles/Cv.css'
+import './styles/Form.css'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

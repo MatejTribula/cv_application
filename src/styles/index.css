@@ -7,7 +7,9 @@
     --clr-pink: #E282D9;
     --clr-purple: #6D5EC9;
 
-    --border-radius: 5px;
+    --clr-gradient: linear-gradient(to bottom, #E282D9, #6D5EC9);
+
+    --border-radius: 3px;
 
     --padding-b: 4rem;
     --padding-m: 3rem;
@@ -18,14 +20,18 @@
 * {
     margin: 0;
     padding: 0;
+
+    box-sizing: border-box;
 }
 
 body {
     font-family: "Roboto", system-ui;
-    background: linear-gradient(to bottom, var(--clr-pink), var(--clr-purple));
+    background: var(--clr-gradient);
     display: grid;
     flex-direction: column;
     justify-content: center;
+
+    padding-bottom: 4rem;
 
 }
 
