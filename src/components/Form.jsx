@@ -31,7 +31,7 @@ function Form(props) {
                 reader.onload = function (e) {
                     // console.log(e)
                     newInputs[0].src = e.target.result
-                    console.log(e.target.result)
+                    // console.log(e.target.result)
 
                     //we need to wait and then assign src (for that reason it is not simplified)
                     setInputArr(newInputs)

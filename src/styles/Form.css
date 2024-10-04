@@ -19,6 +19,12 @@ button,
 /* layout */
 
 /* cv top */
+.form-image {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
 .form-image form {
     display: grid;
     gap: 0.5rem;
@@ -27,6 +33,7 @@ button,
 .form-image img {
     width: 320px;
     height: 320px;
+    object-fit: cover
 }
 
 .form-image .image-placeholder {

@@ -2,9 +2,11 @@
 h2 {
     font-size: 96px;
     font-weight: bold;
-    background: var(--clr-gradient);
+    /* background: var(--clr-gradient);
     -webkit-background-clip: text;
-    color: transparent;
+    color: transparent; */
+
+    color: var(--clr-white);
 }
 
 /* layout */
@@ -40,4 +42,16 @@ h2 {
 
 .form-group>* {
     flex: 1;
+}
+
+.export-btn {
+    background-color: var(--clr-black);
+    color: var(--clr-white);
+    font-size: 26px;
+    padding: 1rem 12px 1rem 20px;
+    border-radius: 50%;
+
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
 }
