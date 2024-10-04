@@ -80,20 +80,29 @@ function Form(props) {
     return (
         <div className={props.classes}>
             {sent
-                ? <div>
+                ? <>
                     {props.isImage
-                        ? <img src={inputArr[0].src} alt="" />
+                        ? <><img src={inputArr[0].src} alt="" />
+                            <button onClick={() => setSent(false)}>edit</button>
+                        </>
                         : <>
                             <h3 >{props.title}</h3 >
-                            {inputArr.map(input => (
-                                <div>
-                                    <p className='para-title'>{input.name}</p>
-                                    <p className='para-text'>{input.value}</p>
-                                </div>
-                            ))}</>}
 
-                    <button onClick={() => setSent(false)}>edit</button>
-                </div>
+                            <div className="form-substitute">
+                                <div className='submitted-text'>
+                                    <div className="title-group">
+                                        {inputArr.map(input => (<p className='para-title'>{input.name}</p>))}
+                                    </div>
+                                    <div className="content-group">
+                                        {inputArr.map(input => (<p className='para-content'>{input.value}</p>))}
+                                    </div>
+                                </div>
+                                <button onClick={() => setSent(false)}>edit</button>
+                            </div>
+                        </>}
+
+
+                </>
 
                 : <><h3 > {props.title}</h3 >
                     <form onSubmit={handleSubmit}>

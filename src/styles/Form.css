@@ -9,6 +9,7 @@ button,
     border: none;
     border-radius: var(--border-radius);
     font-weight: 600;
+    text-align: center;
 
     cursor: pointer;
 }
@@ -60,13 +61,15 @@ input[type="file"] {
     gap: 1rem;
 }
 
-.form-normal form {
+.form-normal form,
+.form-substitute {
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
-.pair-container {
+.pair-container,
+.submitted-text {
     display: flex;
     gap: 1rem;
 }
@@ -78,17 +81,35 @@ input[type="file"] {
 
 
 .label-container,
-.input-container {
+.input-container,
+.title-group,
+.content-group {
     display: grid;
     gap: 0.5rem;
 }
 
-.input-container {
+.input-container,
+.content-group {
     flex: 1;
 }
 
 .label-container label,
-.input-container input {
+.input-container input,
+.title-group *,
+.content-group * {
     font-size: 18px;
     padding: 4px 8px;
 }
+
+.label-container label,
+.title-group * {
+    font-weight: 600;
+}
+
+input {
+    border: none;
+}
+
+
+
+/* submitted part*/

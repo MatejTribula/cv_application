@@ -23,7 +23,7 @@ function App() {
               { id: 5, type: 'text', name: 'phone number', value: '' }]}
               classes="form-normal" />
             <Form
-              title="general information"
+              title="skills"
               inputs={[
                 { id: 1, type: 'text', name: 'no 1', value: '' },
                 { id: 2, type: 'text', name: 'no 2', value: '' },
