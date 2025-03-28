@@ -8,7 +8,7 @@
 
 ## Description
 
-Resume generator application designed in Figma and implemented using React, javascript and CSS
+Resume generator application that enables the user to create a simple resume within minutes
 
 🔗 [View demo](https://resumespark.netlify.app/)
 
